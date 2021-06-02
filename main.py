@@ -27,7 +27,21 @@ def detect_objects(our_image):
     col1.pyplot(use_column_width=True)
 
     # YOLO ALGORITHM
-    net = cv2.dnn.readNet("F:\Yolov3-streamlit\yolov3_training_last.weights", "F:\Yolov3-streamlit\yolov3_testing.cfg")
+    import urllib.request
+
+    url1 = 'https://github.com/AlanRSET/mYolo/releases/download/YoloWeightsF1/yolov3_training_last.weights'
+    hf1 = url1.split('/')[-1]
+
+    urllib.request.urlretrieve(url1, hf1)
+    
+    url2 = 'https://github.com/AlanRSET/mYolo/blob/main/yolov3_testing.cfg'
+    hf2 = url2.split('/')[-1]
+
+    urllib.request.urlretrieve(url2, hf2)
+    
+    
+    
+    net = cv2.dnn.readNet(hf1, hf2)
 
     classes = ["irr p line","sine p line","cont p line","seashore","a line","fluid"]
     layer_names = net.getLayerNames()
