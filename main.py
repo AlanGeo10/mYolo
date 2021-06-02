@@ -34,7 +34,7 @@ def detect_objects(our_image):
 
     urllib.request.urlretrieve(url1, hf1)
     
-    url2 = 'https://github.com/AlanRSET/mYolo/blob/main/yolov3_testing.cfg'
+    url2 = 'https://github.com/AlanRSET/mYolo/releases/download/YoloWeightsF1/yolov3_testing.cfg'
     hf2 = url2.split('/')[-1]
 
     urllib.request.urlretrieve(url2, hf2)
