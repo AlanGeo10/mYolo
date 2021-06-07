@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-#import base64
+import base64
+import streamlit.components.v1 as components
 
 def prediction(x):
   if x[0]==1 and x[5]==1:
@@ -139,6 +140,43 @@ def object_main():
     if image_file is not None:
         our_image = Image.open(image_file)
         detect_objects(our_image)
+
+st.markdown('<style>h1{color: blue;}</style>', unsafe_allow_html=True)
+
+page_bg_img = '''
+<style>
+body {
+background-image: "stream.jpg";
+background-size: cover;
+
+}
+</style>
+
+
+'''
+main_bg = "stream.jpg"
+main_bg_ext = "jpg"
+
+side_bg = "stream.jpg"
+side_bg_ext = "jpg"
+
+st.markdown(
+    f"""
+    <style>
+  
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+   .sidebar .sidebar-content {{
+        background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True)
+
+
+
+st.markdown('<h1 style="float: full;background-color:black">M-mode Lung Ultrasound Pattern Recognition</h1><img style="float: right;" src=".jpg" />', unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
